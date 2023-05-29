@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.appt.dto.AssetDto;
 import com.appt.model.AssetClass;
 import com.appt.model.InvestmentTheme;
+import com.appt.model.Nse;
 import com.appt.repository.AssetClassRepository;
 import com.appt.repository.InvestmentThemeRepository;
+import com.appt.service.AssetService;
 
 @ComponentScan
 @RestController
@@ -30,6 +32,10 @@ public class AssetClassController {
 	
 	@Autowired
 	private AssetClassRepository assetRepo;
+	
+	@Autowired
+	private AssetService assetService;
+	
 	
 	@Autowired
 	private InvestmentThemeRepository themeRepo;
@@ -42,43 +48,53 @@ public class AssetClassController {
 		
 	}
 	
-//	@PostMapping("/add" )
-//	publicResponseEntity<String> createTheme(@RequestBody AssetClass assetClass,){
-//		assetRepo.save(assetClass);
-//		Optional<InvestmentTheme> optional=themeRepo.findById(id);
-//		if(!optional.isPresent()) 
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Theme");
-//		InvestmentTheme theme=optional.get();
-//		assetClass.setTheme(theme);
-//		assetRepo.save(assetClass);
-//		    return ResponseEntity.status(HttpStatus.OK).body("Id added Successfully");
-//	}
+	@PostMapping("/new/{themeId}")
+	public  ResponseEntity<String> createAsset(@RequestBody AssetClass asset,@PathVariable("themeId")long themeId){
+		Optional<InvestmentTheme> optional=themeRepo.findById(themeId);
+		if (!optional.isPresent())
+			   return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid portfolio");
+		InvestmentTheme theme=optional.get();
+		asset.setTheme(theme);
+		assetRepo.save(asset);
+		return ResponseEntity.status(HttpStatus.OK).body("Security added successfully");
+	}
+//	@PostMapping("add/new/{themeId}")
+//	public
 //	
+
 	@GetMapping("/get") 
 	public List<AssetClass> getAllAssets(){
-		return assetRepo.findAll();
+		return assetService.findAll();
 	} 
 	
-//	@GetMapping("/asset/{themeName}")
-//	public List<AssetDto> getAssetByThemeNmae(@PathVariable("themeName") String themeName){
-//		List<AssetClass> list=assetRepo.findByThemeName(themeName);
-//		
-//		List<AssetDto> lDto = new ArrayList<>();
-//		
-//		for(AssetClass a :list) {
-//			AssetDto dto= new AssetDto();
-//			dto.setAsset(a.getAsset());
-//			dto.setSubAssetClass(a.getSubAssetClass());
+	
+//	@GetMapping("/all")
+//	public List<Nse> getAllStocks(){
+//		return nseService.allStocks();
+//	}
+	
+	
+	
+	@GetMapping("/asset/{themeName}")
+	public List<AssetDto> getAssetByThemeNmae(@PathVariable("themeName") String themeName){
+		List<AssetClass> list=assetRepo.findByThemeName(themeName);
+		
+		List<AssetDto> lDto = new ArrayList<>();
+		
+		for(AssetClass a :list) {
+			AssetDto dto= new AssetDto();
+			dto.setAsset(a.getAssetClass());
+			dto.setSubAssetClass(a.getSubAssetClass());
 //			dto.setRisk(a.getTheme().getRisk());
 //			dto.setInvestmentHorizon(a.getTheme().getInvestmentHorizon());
-////			dto.setAllocation(a.getAllocation());
-//			dto.setAssetDesc(a.getAssetDesc());
+//			dto.setAllocation(a.getAllocation());
+			dto.setAssetDesc(a.getAssetDesc());
 //			dto.setThemeName(a.getTheme().getThemeName());
-//			lDto.add(dto);
-//		}
-//		return lDto;
-//	}
-//	
+			lDto.add(dto);
+		}
+		return lDto;
+	}
+	
 	
 	
 }

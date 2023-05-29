@@ -1,19 +1,29 @@
-package com.appt.repository;
+//package com.appt.repository;
+////
+//import java.util.List;
+//import java.util.Optional;
 //
-import java.util.List;
+////
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.Query;
+//import org.springframework.stereotype.Repository;
+////
+//import com.appt.model.AssetClass;
+//import com.appt.model.AssetTheme;
+//import com.appt.model.InvestmentTheme;
 //
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+//@Repository
+//public interface AssetThemeRepository extends JpaRepository<AssetTheme,String> {
+//	
+//	@Query("select a from AssetTheme a where a.theme.themeName=?1")
+//	List<AssetTheme> findByThemeName(String themeName);
 //
-import com.appt.model.AssetClass;
-import com.appt.model.AssetTheme;
-
-@Repository
-public interface AssetThemeRepository extends JpaRepository<AssetTheme,Integer> {
-
-	
-	@Query("select a from AssetTheme a where a.theme.themeName=?1")
-	List<AssetTheme> findByThemeName(String themeName);
-
-}
+//	
+////	@Query("select a from AssetTheme a where a.theme.themeName=?1")
+////	List<AssetTheme> findByThemeName(String themeName);
+//
+////	Optional<AssetTheme> findById(long assetId);
+//
+////	public void save(InvestmentTheme theme);
+//
+//}

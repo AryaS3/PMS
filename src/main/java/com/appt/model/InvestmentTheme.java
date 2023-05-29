@@ -25,8 +25,11 @@ public class InvestmentTheme {
 	private String risk;
 	private String investmentHorizon;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private AssetClass asset;
+	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@OneToMany(mappedBy="InvestmentTheme")
+//	@JoinColumn(name="fk_asset_id",referencedColumnName="assetId")
+//	private List<AssetClass> asset;
 	
 	public long getThemeId() {
 		return themeId;
@@ -53,22 +56,28 @@ public class InvestmentTheme {
 		this.investmentHorizon = investmentHorizon;
 	}
 	
+//	public AssetClass getAsset() {
+//		return asset;
+//	}
+//	public void setAsset(AssetClass asset) {
+//		this.asset = asset;
+//	}
 	public InvestmentTheme() {
 		
 	}
+public InvestmentTheme(long themeId, String themeName, String risk, String investmentHorizon) {
+	super();
+	this.themeId = themeId;
+	this.themeName = themeName;
+	this.risk = risk;
+	this.investmentHorizon = investmentHorizon;
+}
+@Override
+public String toString() {
+	return "InvestmentTheme [themeId=" + themeId + ", themeName=" + themeName + ", risk=" + risk
+			+ ", investmentHorizon=" + investmentHorizon + "]";
+}
 	
-	public InvestmentTheme(long themeId, String themeName, String risk, String investmentHorizon) {
-		super();
-		this.themeId = themeId;
-		this.themeName = themeName;
-		this.risk = risk;
-		this.investmentHorizon = investmentHorizon;
-	}
-	@Override
-	public String toString() {
-		return "InvestmentTheme [themeId=" + themeId + ", themeName=" + themeName + ", risk=" + risk
-				+ ", investmentHorizon=" + investmentHorizon + "]";
-	}
 	
 	
 	

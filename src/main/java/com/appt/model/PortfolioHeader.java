@@ -20,6 +20,7 @@ public class PortfolioHeader {
 	private double investmentValue;
 	private double currentValue;
 	private double returns;
+	private double balance;
 	
 	
 	@ManyToOne
@@ -89,6 +90,12 @@ public class PortfolioHeader {
 		this.returns = returns;
 	}
 	
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
 	public InvestmentTheme getTheme() {
 		return theme;
 	}
@@ -99,10 +106,9 @@ public class PortfolioHeader {
 	public PortfolioHeader() {
 		
 	}
-	@Autowired
 	public PortfolioHeader(String portfolioName, String portfolioType, String themeName, String baseCurrency,
 			String rebalancingFrequency, String benchMark, String exchange, double investmentValue, double currentValue,
-			double returns, InvestmentTheme theme) {
+			double returns, double balance, InvestmentTheme theme) {
 		super();
 		this.portfolioName = portfolioName;
 		this.portfolioType = portfolioType;
@@ -114,6 +120,7 @@ public class PortfolioHeader {
 		this.investmentValue = investmentValue;
 		this.currentValue = currentValue;
 		this.returns = returns;
+		this.balance = balance;
 		this.theme = theme;
 	}
 	@Override
@@ -121,10 +128,9 @@ public class PortfolioHeader {
 		return "PortfolioHeader [portfolioName=" + portfolioName + ", portfolioType=" + portfolioType + ", themeName="
 				+ themeName + ", baseCurrency=" + baseCurrency + ", rebalancingFrequency=" + rebalancingFrequency
 				+ ", benchMark=" + benchMark + ", exchange=" + exchange + ", investmentValue=" + investmentValue
-				+ ", currentValue=" + currentValue + ", returns=" + returns + ", theme=" + theme + "]";
+				+ ", currentValue=" + currentValue + ", returns=" + returns + ", balance=" + balance + ", theme="
+				+ theme + "]";
 	}
-	
-	
 	
 	
 

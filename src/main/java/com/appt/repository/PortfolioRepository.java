@@ -2,6 +2,8 @@ package com.appt.repository;
 
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.appt.dto.PortfolioDto;
+import com.appt.model.PortfolioComposition;
 import com.appt.model.PortfolioHeader;
 
 @Repository
@@ -23,4 +26,6 @@ public interface PortfolioRepository extends JpaRepository<PortfolioHeader, Stri
 
 
 	public PortfolioHeader findByPortfolioNameContaining(String portfolioName);
+	
+	
 }
