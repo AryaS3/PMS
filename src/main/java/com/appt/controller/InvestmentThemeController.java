@@ -4,6 +4,7 @@ package com.appt.controller;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.appt.model.AssetClass;
 import com.appt.model.InvestmentTheme;
+import com.appt.model.PortfolioComposition;
 import com.appt.repository.AssetClassRepository;
 import com.appt.repository.InvestmentThemeRepository;
 
@@ -53,6 +55,11 @@ public class InvestmentThemeController {
 	@GetMapping("/get/{themeName}")
 	public InvestmentTheme getthemeName(@PathVariable("themeName") String themeName){
 		return themeRepository.findBythemeNameContaining(themeName);
+	}
+	
+	@GetMapping("/theme/getAll") 
+	public List<InvestmentTheme> getTheme(){
+		return themeRepository.findAll();
 	}
 	
 }

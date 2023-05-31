@@ -1,5 +1,6 @@
 package com.appt.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -85,16 +86,19 @@ public class AssetClassController {
 			AssetDto dto= new AssetDto();
 			dto.setAsset(a.getAssetClass());
 			dto.setSubAssetClass(a.getSubAssetClass());
-//			dto.setRisk(a.getTheme().getRisk());
-//			dto.setInvestmentHorizon(a.getTheme().getInvestmentHorizon());
-//			dto.setAllocation(a.getAllocation());
-			dto.setAssetDesc(a.getAssetDesc());
-//			dto.setThemeName(a.getTheme().getThemeName());
+		    dto.setRisk(a.getTheme().getRisk());
+			dto.setInvestmentHorizon(a.getTheme().getInvestmentHorizon());
+			dto.setAllocation(a.getAllocation());
+			dto.setAssetDesc(a.getAssetDesc());			
+			dto.setThemeName(a.getTheme().getThemeName());
 			lDto.add(dto);
 		}
 		return lDto;
 	}
 	
-	
+	@PostMapping("/insertAsset")
+	public void setDataInDB() throws IOException {
+        assetService.newAssetData();
+	}
 	
 }

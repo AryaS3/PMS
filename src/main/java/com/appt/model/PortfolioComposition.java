@@ -40,6 +40,9 @@ public class PortfolioComposition {
 	@ManyToOne
 	private PortfolioHeader header;
 	
+	@ManyToOne
+	private Nse nse;
+	
 	public PortfolioComposition() {
 		super();
 	}

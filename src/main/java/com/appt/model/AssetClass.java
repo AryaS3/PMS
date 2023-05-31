@@ -21,9 +21,15 @@ public class AssetClass {
 	private String assetClass;
 	private String subAssetClass;
 	private String assetDesc;
+	private String liquidity;
+	private String returns;
+	private String InvestmentHorizon;
+	private String Risk;
   @ManyToOne(cascade = CascadeType.ALL)
 	private InvestmentTheme theme;
 	
+  
+  
 	private int allocation;
 //	
 //	@OneToMany(cascade = CascadeType.ALL)
@@ -73,24 +79,60 @@ public class AssetClass {
 	public void setTheme(InvestmentTheme theme) {
 		this.theme = theme;
 	}
+	
+	
+	
+	public String getInvestmentHorizon() {
+		return InvestmentHorizon;
+	}
+	public void setInvestmentHorizon(String investmentHorizon) {
+		InvestmentHorizon = investmentHorizon;
+	}
+	public String getRisk() {
+		return Risk;
+	}
+	public void setRisk(String risk) {
+		Risk = risk;
+	}
+	public String getLiquidity() {
+		return liquidity;
+	}
+	public void setLiquidity(String liquidity) {
+		this.liquidity = liquidity;
+	}
+	
+	public String getReturns() {
+		return returns;
+	}
+	public void setReturns(String returns) {
+		this.returns = returns;
+	}
 	public AssetClass() {
 		
 	}
 	
-	public AssetClass(long assetId, String assetClass, String subAssetClass, String assetDesc, InvestmentTheme theme,
-			int allocation) {
+	
+	
+	public AssetClass(long assetId, String assetClass, String subAssetClass, String assetDesc, String liquidity,
+			String returns, String investmentHorizon, String risk, InvestmentTheme theme, int allocation) {
 		super();
 		this.assetId = assetId;
 		this.assetClass = assetClass;
 		this.subAssetClass = subAssetClass;
 		this.assetDesc = assetDesc;
+		this.liquidity = liquidity;
+		this.returns = returns;
+		InvestmentHorizon = investmentHorizon;
+		Risk = risk;
 		this.theme = theme;
 		this.allocation = allocation;
 	}
 	@Override
 	public String toString() {
 		return "AssetClass [assetId=" + assetId + ", assetClass=" + assetClass + ", subAssetClass=" + subAssetClass
-				+ ", assetDesc=" + assetDesc + ", theme=" + theme + ", allocation=" + allocation + "]";
+				+ ", assetDesc=" + assetDesc + ", liquidity=" + liquidity + ", returns=" + returns
+				+ ", InvestmentHorizon=" + InvestmentHorizon + ", Risk=" + Risk + ", theme=" + theme + ", allocation="
+				+ allocation + "]";
 	}
 	
 }

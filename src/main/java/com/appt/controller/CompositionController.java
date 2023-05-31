@@ -71,6 +71,7 @@ public class CompositionController {
 		for(PortfolioComposition composition:list) {
 			PortfolioDto dto=new PortfolioDto();
 			dto.setPortfolioName(composition.getHeader().getPortfolioName());
+			dto.setTotalTransaction(composition.getTotalTransaction());
 			dto.setPrice(composition.getPrice());
 			dto.setSecurityName(composition.getSecurityName());
 			dto.setTransactionDate(composition.getTransactionDate());
